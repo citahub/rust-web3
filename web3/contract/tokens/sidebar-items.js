@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Detokenize","Output type possible to deserialize from Contract ABI"],["Tokenizable","Simplified output type for single value."],["Tokenize","Tokens conversion trait"]]});

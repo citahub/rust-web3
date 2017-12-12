@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Http","HTTP Transport (synchronous)"]],"type":[["FetchTask","A future representing pending HTTP request, resolves to a response."]]});

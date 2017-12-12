@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Contract` struct in crate `web3`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Contract">
+
+    <title>web3::contract::Contract - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Contract</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>web3</a>::<wbr><a href='index.html'>contract</a></p><script>window.sidebarCurrent = {name: 'Contract', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>web3</a>::<wbr><a href='index.html'>contract</a>::<wbr><a class="struct" href=''>Contract</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/web3/contract/mod.rs.html#47-51' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Contract&lt;T:&nbsp;<a class="trait" href="../../web3/trait.Transport.html" title="trait web3::Transport">Transport</a>&gt; { /* fields omitted */ }</pre><div class='docblock'><p>Ethereum Contract Interface</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../web3/trait.Transport.html" title="trait web3::Transport">Transport</a>&gt; <a class="struct" href="../../web3/contract/struct.Contract.html" title="struct web3::contract::Contract">Contract</a>&lt;T&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#53-65' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.deploy' class="method"><span id='deploy.v' class='invisible'><code>pub fn <a href='#method.deploy' class='fnname'>deploy</a>(eth: <a class="struct" href="../../web3/api/struct.Eth.html" title="struct web3::api::Eth">Eth</a>&lt;T&gt;, json: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../web3/contract/deploy/struct.Builder.html" title="struct web3::contract::deploy::Builder">Builder</a>&lt;T&gt;, Error&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#55-64' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates deployment builder for a contract given it&#39;s ABI in JSON.</p>
+</div></div><h3 id='impl-1' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../web3/trait.Transport.html" title="trait web3::Transport">Transport</a>&gt; <a class="struct" href="../../web3/contract/struct.Contract.html" title="struct web3::contract::Contract">Contract</a>&lt;T&gt;</code><a href='#impl-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#67-150' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(eth: <a class="struct" href="../../web3/api/struct.Eth.html" title="struct web3::api::Eth">Eth</a>&lt;T&gt;, address: <a class="type" href="../../web3/types/type.Address.html" title="type web3::types::Address">Address</a>, abi: Contract) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#69-75' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates new Contract Interface given blockchain address and ABI</p>
+</div><h4 id='method.from_json' class="method"><span id='from_json.v' class='invisible'><code>pub fn <a href='#method.from_json' class='fnname'>from_json</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;eth: <a class="struct" href="../../web3/api/struct.Eth.html" title="struct web3::api::Eth">Eth</a>&lt;T&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;address: <a class="type" href="../../web3/types/type.Address.html" title="type web3::types::Address">Address</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;json: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, Error&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#78-81' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates new Contract Interface given blockchain address and JSON containing ABI</p>
+</div><h4 id='method.address' class="method"><span id='address.v' class='invisible'><code>pub fn <a href='#method.address' class='fnname'>address</a>(&amp;self) -&gt; <a class="type" href="../../web3/types/type.Address.html" title="type web3::types::Address">Address</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#84-86' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns contract address</p>
+</div><h4 id='method.call' class="method"><span id='call.v' class='invisible'><code>pub fn <a href='#method.call' class='fnname'>call</a>&lt;P&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;func: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;params: P, <br>&nbsp;&nbsp;&nbsp;&nbsp;from: <a class="type" href="../../web3/types/type.Address.html" title="type web3::types::Address">Address</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: <a class="struct" href="../../web3/contract/struct.Options.html" title="struct web3::contract::Options">Options</a><br>) -&gt; <a class="struct" href="../../web3/contract/struct.CallResult.html" title="struct web3::contract::CallResult">CallResult</a>&lt;<a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>, T::<a class="type" href="../../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="../../web3/contract/tokens/trait.Tokenize.html" title="trait web3::contract::tokens::Tokenize">Tokenize</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#89-107' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Execute a contract function</p>
+</div><h4 id='method.estimate_gas' class="method"><span id='estimate_gas.v' class='invisible'><code>pub fn <a href='#method.estimate_gas' class='fnname'>estimate_gas</a>&lt;P&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;func: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;params: P, <br>&nbsp;&nbsp;&nbsp;&nbsp;from: <a class="type" href="../../web3/types/type.Address.html" title="type web3::types::Address">Address</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: <a class="struct" href="../../web3/contract/struct.Options.html" title="struct web3::contract::Options">Options</a><br>) -&gt; <a class="struct" href="../../web3/contract/struct.CallResult.html" title="struct web3::contract::CallResult">CallResult</a>&lt;<a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>, T::<a class="type" href="../../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="../../web3/contract/tokens/trait.Tokenize.html" title="trait web3::contract::tokens::Tokenize">Tokenize</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#110-126' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Estimate gas required for this function call.</p>
+</div><h4 id='method.query' class="method"><span id='query.v' class='invisible'><code>pub fn <a href='#method.query' class='fnname'>query</a>&lt;R, A, B, P&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;func: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;params: P, <br>&nbsp;&nbsp;&nbsp;&nbsp;from: A, <br>&nbsp;&nbsp;&nbsp;&nbsp;options: <a class="struct" href="../../web3/contract/struct.Options.html" title="struct web3::contract::Options">Options</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;block: B<br>) -&gt; <a class="struct" href="../../web3/contract/struct.QueryResult.html" title="struct web3::contract::QueryResult">QueryResult</a>&lt;R, T::<a class="type" href="../../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../../web3/contract/tokens/trait.Detokenize.html" title="trait web3::contract::tokens::Detokenize">Detokenize</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../web3/types/type.Address.html" title="type web3::types::Address">Address</a>&gt;&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../web3/types/enum.BlockNumber.html" title="enum web3::types::BlockNumber">BlockNumber</a>&gt;&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;P: <a class="trait" href="../../web3/contract/tokens/trait.Tokenize.html" title="trait web3::contract::tokens::Tokenize">Tokenize</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#129-149' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Call constant function</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="../../web3/trait.Transport.html" title="trait web3::Transport">Transport</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../web3/contract/struct.Contract.html" title="struct web3::contract::Contract">Contract</a>&lt;T&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#46' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/contract/mod.rs.html#46' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "web3";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

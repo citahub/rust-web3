@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Ipc","Unix Domain Sockets (IPC) transport"]],"type":[["IpcTask","A future representing pending IPC request, resolves to a response."]]});

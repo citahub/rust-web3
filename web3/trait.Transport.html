@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Transport` trait in crate `web3`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Transport">
+
+    <title>web3::Transport - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Trait Transport</p><div class="block items"><ul><li><a href="#associated-types">Associated Types</a></li><li><a href="#required-methods">Required Methods</a></li><li><a href="#provided-methods">Provided Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='index.html'>web3</a></p><script>window.sidebarCurrent = {name: 'Transport', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>web3</a>::<wbr><a class="trait" href=''>Transport</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/web3/lib.rs.html#52-67' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Transport: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> {
+    type <a href='#associatedtype.Out' class="type">Out</a>: <a class="trait" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html" title="trait futures::future::Future">Future</a>&lt;Item = <a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>, Error = <a class="struct" href="../web3/error/struct.Error.html" title="struct web3::error::Error">Error</a>&gt;;
+    fn <a href='#tymethod.prepare' class='fnname'>prepare</a>(&amp;self, method: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, params: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../web3/type.RequestId.html" title="type web3::RequestId">RequestId</a>, Call<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>;
+<div class='item-spacer'></div>    fn <a href='#tymethod.send' class='fnname'>send</a>(&amp;self, id: <a class="type" href="../web3/type.RequestId.html" title="type web3::RequestId">RequestId</a>, request: Call) -&gt; Self::<a class="type" href="../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a>;
+
+    fn <a href='#method.execute' class='fnname'>execute</a>(&amp;self, method: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, params: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;) -&gt; Self::<a class="type" href="../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a> { ... }
+}</pre><div class='docblock'><p>Transport implementation</p>
+</div>
+            <h2 id='associated-types' class='small-section-header'>
+              Associated Types<a href='#associated-types' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='associatedtype.Out' class='method'><span id='Out.t' class='invisible'><code>type <a href='#associatedtype.Out' class="type">Out</a>: <a class="trait" href="https://docs.rs/futures/0.1/futures/future/trait.Future.html" title="trait futures::future::Future">Future</a>&lt;Item = <a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>, Error = <a class="struct" href="../web3/error/struct.Error.html" title="struct web3::error::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>The type of future this transport returns when a call is made.</p>
+</div></div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.prepare' class='method'><span id='prepare.v' class='invisible'><code>fn <a href='#tymethod.prepare' class='fnname'>prepare</a>(&amp;self, method: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, params: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../web3/type.RequestId.html" title="type web3::RequestId">RequestId</a>, Call<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h3><div class='docblock'><p>Prepare serializable RPC call for given method with parameters.</p>
+</div><h3 id='tymethod.send' class='method'><span id='send.v' class='invisible'><code>fn <a href='#tymethod.send' class='fnname'>send</a>(&amp;self, id: <a class="type" href="../web3/type.RequestId.html" title="type web3::RequestId">RequestId</a>, request: Call) -&gt; Self::<a class="type" href="../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a></code></span></h3><div class='docblock'><p>Execute prepared RPC call.</p>
+</div></div>
+            <h2 id='provided-methods' class='small-section-header'>
+              Provided Methods<a href='#provided-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='method.execute' class='method'><span id='execute.v' class='invisible'><code>fn <a href='#method.execute' class='fnname'>execute</a>(&amp;self, method: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, params: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;) -&gt; Self::<a class="type" href="../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a></code></span></h3><div class='docblock'><p>Execute remote method with given parameters.</p>
+</div></div>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><div class='out-of-band'><a class='srclink' href='../src/web3/transports/batch.rs.html#51-67' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Transport for <a class="struct" href="../web3/transports/batch/struct.Batch.html" title="struct web3::transports::batch::Batch">Batch</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../web3/trait.BatchTransport.html" title="trait web3::BatchTransport">BatchTransport</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Out' class="type">Out</a> = <a class="struct" href="../web3/transports/batch/struct.SingleResult.html" title="struct web3::transports::batch::SingleResult">SingleResult</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../src/web3/transports/http.rs.html#128-145' title='goto source code'>[src]</a></div><code>impl Transport for <a class="struct" href="../web3/transports/http/struct.Http.html" title="struct web3::transports::http::Http">Http</a><span class="where fmt-newline">  type <a href='#associatedtype.Out' class="type">Out</a> = <a class="type" href="../web3/transports/http/type.FetchTask.html" title="type web3::transports::http::FetchTask">FetchTask</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.fn.html">fn</a>(_: <a class="struct" href="https://docs.rs/hyper/0.11.9/hyper/proto/chunk/struct.Chunk.html" title="struct hyper::proto::chunk::Chunk">Chunk</a>) -&gt; <a class="type" href="../web3/transports/type.Result.html" title="type web3::transports::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../src/web3/transports/ipc.rs.html#116-133' title='goto source code'>[src]</a></div><code>impl Transport for <a class="struct" href="../web3/transports/ipc/struct.Ipc.html" title="struct web3::transports::ipc::Ipc">Ipc</a><span class="where fmt-newline">  type <a href='#associatedtype.Out' class="type">Out</a> = <a class="type" href="../web3/transports/ipc/type.IpcTask.html" title="type web3::transports::ipc::IpcTask">IpcTask</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.fn.html">fn</a>(_: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="type" href="../web3/transports/type.Result.html" title="type web3::transports::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;&gt;) -&gt; <a class="type" href="../web3/transports/type.Result.html" title="type web3::transports::Result">Result</a>&lt;<a class="enum" href="https://docs.rs/serde_json/1.0.8/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt;&gt;;</span></code></li>
+<li><code>impl&lt;X, T:&nbsp;?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>&gt; Transport for X <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../web3/trait.Transport.html" title="trait web3::Transport">Transport</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;X: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/deref/trait.Deref.html" title="trait core::ops::deref::Deref">Deref</a>&lt;Target = T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;X: <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;X: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Out' class="type">Out</a> = T::<a class="type" href="../web3/trait.Transport.html#associatedtype.Out" title="type web3::Transport::Out">Out</a>;</span></code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/web3/trait.Transport.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "web3";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

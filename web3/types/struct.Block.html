@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Block` struct in crate `web3`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Block">
+
+    <title>web3::types::Block - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct Block</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>web3</a>::<wbr><a href='index.html'>types</a></p><script>window.sidebarCurrent = {name: 'Block', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>web3</a>::<wbr><a href='index.html'>types</a>::<wbr><a class="struct" href=''>Block</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/web3/types/block.rs.html#7-58' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Block&lt;TX&gt; {
+    pub hash: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>&gt;,
+    pub parent_hash: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>,
+    pub uncles_hash: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>,
+    pub author: <a class="struct" href="../../web3/types/struct.H160.html" title="struct web3::types::H160">H160</a>,
+    pub state_root: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>,
+    pub transactions_root: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>,
+    pub receipts_root: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>,
+    pub number: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../web3/types/struct.U64.html" title="struct web3::types::U64">U64</a>&gt;,
+    pub gas_used: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>,
+    pub gas_limit: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>,
+    pub extra_data: <a class="struct" href="../../web3/types/struct.Bytes.html" title="struct web3::types::Bytes">Bytes</a>,
+    pub logs_bloom: <a class="struct" href="../../web3/types/struct.H2048.html" title="struct web3::types::H2048">H2048</a>,
+    pub timestamp: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>,
+    pub difficulty: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>,
+    pub total_difficulty: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>,
+    pub seal_fields: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../web3/types/struct.Bytes.html" title="struct web3::types::Bytes">Bytes</a>&gt;,
+    pub uncles: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>&gt;,
+    pub transactions: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;TX&gt;,
+    pub size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>&gt;,
+}</pre><div class='docblock'><p>The block type returned from RPC calls.
+This is generic over a <code>TX</code> type.</p>
+</div><h2 id='fields' class='fields small-section-header'>
+                       Fields<a href='#fields' class='anchor'></a></h2><span id="structfield.hash" class="structfield small-section-header">
+                           <a href="#structfield.hash" class="anchor field"></a>
+                           <span id="hash.v" class='invisible'>
+                           <code>hash: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Hash of the block</p>
+</div><span id="structfield.parent_hash" class="structfield small-section-header">
+                           <a href="#structfield.parent_hash" class="anchor field"></a>
+                           <span id="parent_hash.v" class='invisible'>
+                           <code>parent_hash: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a></code>
+                           </span></span><div class='docblock'><p>Hash of the parent</p>
+</div><span id="structfield.uncles_hash" class="structfield small-section-header">
+                           <a href="#structfield.uncles_hash" class="anchor field"></a>
+                           <span id="uncles_hash.v" class='invisible'>
+                           <code>uncles_hash: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a></code>
+                           </span></span><div class='docblock'><p>Hash of the uncles</p>
+</div><span id="structfield.author" class="structfield small-section-header">
+                           <a href="#structfield.author" class="anchor field"></a>
+                           <span id="author.v" class='invisible'>
+                           <code>author: <a class="struct" href="../../web3/types/struct.H160.html" title="struct web3::types::H160">H160</a></code>
+                           </span></span><div class='docblock'><p>Miner/author&#39;s address.</p>
+</div><span id="structfield.state_root" class="structfield small-section-header">
+                           <a href="#structfield.state_root" class="anchor field"></a>
+                           <span id="state_root.v" class='invisible'>
+                           <code>state_root: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a></code>
+                           </span></span><div class='docblock'><p>State root hash</p>
+</div><span id="structfield.transactions_root" class="structfield small-section-header">
+                           <a href="#structfield.transactions_root" class="anchor field"></a>
+                           <span id="transactions_root.v" class='invisible'>
+                           <code>transactions_root: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a></code>
+                           </span></span><div class='docblock'><p>Transactions root hash</p>
+</div><span id="structfield.receipts_root" class="structfield small-section-header">
+                           <a href="#structfield.receipts_root" class="anchor field"></a>
+                           <span id="receipts_root.v" class='invisible'>
+                           <code>receipts_root: <a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a></code>
+                           </span></span><div class='docblock'><p>Transactions receipts root hash</p>
+</div><span id="structfield.number" class="structfield small-section-header">
+                           <a href="#structfield.number" class="anchor field"></a>
+                           <span id="number.v" class='invisible'>
+                           <code>number: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../web3/types/struct.U64.html" title="struct web3::types::U64">U64</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Block number. None if pending.</p>
+</div><span id="structfield.gas_used" class="structfield small-section-header">
+                           <a href="#structfield.gas_used" class="anchor field"></a>
+                           <span id="gas_used.v" class='invisible'>
+                           <code>gas_used: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a></code>
+                           </span></span><div class='docblock'><p>Gas Used</p>
+</div><span id="structfield.gas_limit" class="structfield small-section-header">
+                           <a href="#structfield.gas_limit" class="anchor field"></a>
+                           <span id="gas_limit.v" class='invisible'>
+                           <code>gas_limit: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a></code>
+                           </span></span><div class='docblock'><p>Gas Limit</p>
+</div><span id="structfield.extra_data" class="structfield small-section-header">
+                           <a href="#structfield.extra_data" class="anchor field"></a>
+                           <span id="extra_data.v" class='invisible'>
+                           <code>extra_data: <a class="struct" href="../../web3/types/struct.Bytes.html" title="struct web3::types::Bytes">Bytes</a></code>
+                           </span></span><div class='docblock'><p>Extra data</p>
+</div><span id="structfield.logs_bloom" class="structfield small-section-header">
+                           <a href="#structfield.logs_bloom" class="anchor field"></a>
+                           <span id="logs_bloom.v" class='invisible'>
+                           <code>logs_bloom: <a class="struct" href="../../web3/types/struct.H2048.html" title="struct web3::types::H2048">H2048</a></code>
+                           </span></span><div class='docblock'><p>Logs bloom</p>
+</div><span id="structfield.timestamp" class="structfield small-section-header">
+                           <a href="#structfield.timestamp" class="anchor field"></a>
+                           <span id="timestamp.v" class='invisible'>
+                           <code>timestamp: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a></code>
+                           </span></span><div class='docblock'><p>Timestamp</p>
+</div><span id="structfield.difficulty" class="structfield small-section-header">
+                           <a href="#structfield.difficulty" class="anchor field"></a>
+                           <span id="difficulty.v" class='invisible'>
+                           <code>difficulty: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a></code>
+                           </span></span><div class='docblock'><p>Difficulty</p>
+</div><span id="structfield.total_difficulty" class="structfield small-section-header">
+                           <a href="#structfield.total_difficulty" class="anchor field"></a>
+                           <span id="total_difficulty.v" class='invisible'>
+                           <code>total_difficulty: <a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a></code>
+                           </span></span><div class='docblock'><p>Total difficulty</p>
+</div><span id="structfield.seal_fields" class="structfield small-section-header">
+                           <a href="#structfield.seal_fields" class="anchor field"></a>
+                           <span id="seal_fields.v" class='invisible'>
+                           <code>seal_fields: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../web3/types/struct.Bytes.html" title="struct web3::types::Bytes">Bytes</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Seal fields</p>
+</div><span id="structfield.uncles" class="structfield small-section-header">
+                           <a href="#structfield.uncles" class="anchor field"></a>
+                           <span id="uncles.v" class='invisible'>
+                           <code>uncles: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../web3/types/struct.H256.html" title="struct web3::types::H256">H256</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Uncles&#39; hashes</p>
+</div><span id="structfield.transactions" class="structfield small-section-header">
+                           <a href="#structfield.transactions" class="anchor field"></a>
+                           <span id="transactions.v" class='invisible'>
+                           <code>transactions: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;TX&gt;</code>
+                           </span></span><div class='docblock'><p>Transactions</p>
+</div><span id="structfield.size" class="structfield small-section-header">
+                           <a href="#structfield.size" class="anchor field"></a>
+                           <span id="size.v" class='invisible'>
+                           <code>size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../web3/types/struct.U256.html" title="struct web3::types::U256">U256</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Size in bytes</p>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;TX:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../web3/types/struct.Block.html" title="struct web3::types::Block">Block</a>&lt;TX&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl&lt;TX:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../web3/types/struct.Block.html" title="struct web3::types::Block">Block</a>&lt;TX&gt;</code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../web3/types/struct.Block.html" title="struct web3::types::Block">Block</a>&lt;TX&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl&lt;TX:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../../web3/types/struct.Block.html" title="struct web3::types::Block">Block</a>&lt;TX&gt;</code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../web3/types/struct.Block.html" title="struct web3::types::Block">Block</a>&lt;TX&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../web3/types/struct.Block.html" title="struct web3::types::Block">Block</a>&lt;TX&gt;) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/web3/types/block.rs.html#6' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "web3";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
