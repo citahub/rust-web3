@@ -5,7 +5,9 @@ mod eth_filter;
 mod net;
 mod personal;
 mod web3;
+mod cita;
 
+pub use self::cita::Cita;
 pub use self::eth::Eth;
 pub use self::eth_filter::{BaseFilter, CreateFilter, EthFilter, FilterStream};
 pub use self::net::Net;
@@ -50,6 +52,11 @@ impl<T: Transport> Web3<T> {
 
     /// Access methods from `eth` namespace
     pub fn eth(&self) -> eth::Eth<T> {
+        self.api()
+    }
+
+    /// Access methods from `eth` namespace
+    pub fn cita(&self) -> Cita<T> {
         self.api()
     }
 

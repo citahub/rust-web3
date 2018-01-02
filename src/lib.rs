@@ -19,6 +19,8 @@ extern crate error_chain;
 extern crate log;
 #[macro_use]
 extern crate serde_derive;
+//
+//extern crate libproto;
 
 /// Re-export of the `futures` crate.
 #[macro_use]
@@ -28,13 +30,11 @@ pub extern crate futures;
 // otherwise the macro for tests is not available.
 #[macro_use]
 pub mod helpers;
-
 pub mod api;
 pub mod contract;
 pub mod error;
 pub mod transports;
 pub mod types;
-
 pub mod confirm;
 
 use futures::Future;
