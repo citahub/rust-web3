@@ -19,8 +19,8 @@ extern crate error_chain;
 extern crate log;
 #[macro_use]
 extern crate serde_derive;
-//
-//extern crate libproto;
+
+extern crate libproto;
 
 /// Re-export of the `futures` crate.
 #[macro_use]

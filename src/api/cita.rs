@@ -1,12 +1,12 @@
-//! `Eth` namespace
+//! `Cita` namespace
 
 use api::Namespace;
 use helpers::{self, CallResult};
 use types::{Address, Block, BlockId, BlockNumber, Bytes, CallRequest, H256, H520, H64, Index, Transaction,
             TransactionId, TransactionReceipt, TransactionRequest, U256, Work};
 use Transport;
+//use libproto::blockchain::{Crypto, Transaction, UnverifiedTransaction};
 
-/// `Eth` namespace
 #[derive(Debug, Clone)]
 pub struct Cita<T> {
     transport: T,
@@ -27,7 +27,7 @@ impl<T: Transport> Namespace<T> for Cita<T> {
 
 impl<T: Transport> Cita<T> {
     /// Get list of available accounts.
-    pub fn accounts(&self) -> CallResult<Vec<Address>, T::Out> {
+    fn accounts(&self) -> CallResult<Vec<Address>, T::Out> {
         CallResult::new(self.transport.execute("eth_accounts", vec![]))
     }
 
@@ -87,7 +87,7 @@ impl<T: Transport> Cita<T> {
 
 
     /// Get number of transactions in block
-    pub fn block_transaction_count(&self, block: BlockId) -> CallResult<Option<U256>, T::Out> {
+    fn block_transaction_count(&self, block: BlockId) -> CallResult<Option<U256>, T::Out> {
         let result = match block {
             BlockId::Hash(hash) => {
                 let hash = helpers::serialize(&hash);
@@ -114,7 +114,7 @@ impl<T: Transport> Cita<T> {
 
 
     /// Get storage entry
-    pub fn storage(&self, address: Address, idx: U256, block: Option<BlockNumber>) -> CallResult<H256, T::Out> {
+    fn storage(&self, address: Address, idx: U256, block: Option<BlockNumber>) -> CallResult<H256, T::Out> {
         let address = helpers::serialize(&address);
         let idx = helpers::serialize(&idx);
         let block = helpers::serialize(&block.unwrap_or(BlockNumber::Latest));
@@ -171,7 +171,7 @@ impl<T: Transport> Cita<T> {
     }
 
     /// Get work package
-    pub fn work(&self) -> CallResult<Work, T::Out> {
+    fn work(&self) -> CallResult<Work, T::Out> {
         CallResult::new(self.transport.execute("eth_getWork", vec![]))
     }
 
@@ -181,7 +181,7 @@ impl<T: Transport> Cita<T> {
     }
 
     /// Start new pending transaction filter
-    pub fn new_pending_transaction_filter(&self) -> CallResult<U256, T::Out> {
+    fn new_pending_transaction_filter(&self) -> CallResult<U256, T::Out> {
         CallResult::new(
             self.transport
                 .execute("eth_newPendingTransactionFilter", vec![]),
@@ -189,12 +189,12 @@ impl<T: Transport> Cita<T> {
     }
 
     /// Start new pending transaction filter
-    pub fn protocol_version(&self) -> CallResult<String, T::Out> {
+    fn protocol_version(&self) -> CallResult<String, T::Out> {
         CallResult::new(self.transport.execute("eth_protocolVersion", vec![]))
     }
 
     /// Sends a rlp-encoded signed transaction
-    pub fn send_raw_transaction(&self, rlp: Bytes) -> CallResult<H256, T::Out> {
+    fn send_raw_transaction(&self, rlp: Bytes) -> CallResult<H256, T::Out> {
         let rlp = helpers::serialize(&rlp);
         CallResult::new(self.transport.execute("eth_sendRawTransaction", vec![rlp]))
     }
@@ -207,7 +207,7 @@ impl<T: Transport> Cita<T> {
 
     // TODO [ToDr] Proper type?
     /// Get syncing status
-    pub fn syncing(&self) -> CallResult<bool, T::Out> {
+    fn syncing(&self) -> CallResult<bool, T::Out> {
         CallResult::new(self.transport.execute("eth_syncing", vec![]))
     }
 }
