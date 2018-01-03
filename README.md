@@ -3,25 +3,46 @@
 Ethereum JSON-RPC multi-transport client.
 Rust implementation of Web3.js library.
 
-[![Build Status][travis-image]][travis-url]
-
-[travis-image]: https://travis-ci.org/tomusdrw/rust-web3.svg?branch=master
-[travis-url]: https://travis-ci.org/tomusdrw/rust-web3
-
-[Documentation](http://tomusdrw.github.io/rust-web3/index.html)
 
 # Examples
 ```rust
+extern crate tokio_core;
 extern crate web3;
 
 use web3::futures::Future;
+use web3::types::{BlockId, BlockNumber};
+
+const MAX_PARALLEL_REQUESTS: usize = 64;
 
 fn main() {
-  let (_eloop, transport) = web3::transports::Http::new("http://localhost:8545").unwrap();
-  let web3 = web3::Web3::new(transport);
-  let accounts = web3.eth().accounts().wait().unwrap();
+    let mut event_loop = tokio_core::reactor::Core::new().unwrap();
+    let web3 = web3::Web3::new(
+        web3::transports::Http::with_event_loop(
+            "http://localhost:1337",
+            &event_loop.handle(),
+            MAX_PARALLEL_REQUESTS,
+        ).unwrap(),
+    );
 
-  println!("Accounts: {:?}", accounts);
+    //get height
+    let block_number = web3.cita().block_number().map(|height| {
+        println!("height: {:?}", height);
+    });
+    event_loop.run(block_number).unwrap();
+
+    //get peer count
+    let peer_count = web3.net().peer_count().map(|peer_count| {
+        println!("peer_count: {:?}", peer_count);
+    });
+    event_loop.run(peer_count).unwrap();
+
+    //get block
+    let block = web3.cita()
+        .block(BlockId::Number(BlockNumber::Latest))
+        .map(|block| {
+            println!("block: {:?}", block);
+        });
+    event_loop.run(block).unwrap();
 }
 ```
 
@@ -31,7 +52,7 @@ If you want to deploy smart contracts you have written you can do something like
 
 The solidity compiler is generating the binary and abi code for the smart contracts in a directory called contracts and is being output to a directory called build.
 
-For more see [examples folder](./examples).
+For more see [examples folder](./examples)
 
 # TODO
 
@@ -60,6 +81,7 @@ For more see [examples folder](./examples).
 - [x] `net_*`
 - [x] `web3_*`
 - [x] `personal_*`
+- [x] `cita_*`
 - [ ] `traces_*`
 
 ### Parity-specific APIs
