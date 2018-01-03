@@ -37,6 +37,7 @@ pub mod error;
 pub mod transports;
 pub mod types;
 pub mod confirm;
+pub mod cita_types;
 
 use futures::Future;
 
