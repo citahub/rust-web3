@@ -6,10 +6,9 @@ extern crate jsonrpc_core as rpc;
 extern crate parking_lot;
 extern crate rustc_serialize;
 extern crate serde;
-extern crate tokio_timer;
-
 #[cfg_attr(test, macro_use)]
 extern crate serde_json;
+extern crate tokio_timer;
 
 #[macro_use]
 extern crate error_chain;

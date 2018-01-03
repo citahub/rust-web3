@@ -32,6 +32,8 @@ cita-crypto = { git = "https://github.com/cryptape/cita-common.git", branch = "d
 proof = { git = "https://github.com/cryptape/cita-common.git", branch = "develop" }
 util = { git = "https://github.com/cryptape/cita-common.git", branch = "develop" }
 jsonrpc_types = {git = "https://github.com/cryptape/cita.git", branch = "develop" }
+protobuf = { version = "^1.0.0"}
+rustc-hex = "1.0"
 
 [dev-dependencies]
 # For examples
