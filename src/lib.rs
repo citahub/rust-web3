@@ -1,7 +1,5 @@
 //! Ethereum JSON-RPC client (Web3).
 
-#![warn(missing_docs)]
-
 extern crate arrayvec;
 extern crate ethabi;
 extern crate jsonrpc_core as rpc;
