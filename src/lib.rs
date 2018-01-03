@@ -20,6 +20,7 @@ extern crate log;
 #[macro_use]
 extern crate serde_derive;
 
+extern crate jsonrpc_types;
 extern crate libproto;
 
 /// Re-export of the `futures` crate.

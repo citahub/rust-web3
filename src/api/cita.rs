@@ -1,12 +1,25 @@
 //! `Cita` namespace
-
+#![allow(dead_code, unused_imports)]
 use api::Namespace;
 use helpers::{self, CallResult};
-use types::{Address, Block, BlockId, BlockNumber, Bytes, CallRequest, H256, H520, H64, Index, Transaction,
-            TransactionId, TransactionReceipt, TransactionRequest, U256, Work};
+use types::{Address, BlockId, BlockNumber, Bytes, H256, U256, Work};
 use Transport;
-//use libproto::blockchain::{Crypto, Transaction, UnverifiedTransaction};
+use libproto::TxResponse;
+use jsonrpc_types::rpctypes::{transaction, Block, BlockTransaction, FilterChanges, Log, Receipt, RpcBlock,
+                              RpcTransaction};
 
+/// Call request
+#[derive(Debug, Default, PartialEq, Deserialize, Serialize)]
+pub struct CallRequest {
+    /// From
+    pub from: Option<Address>,
+    /// To
+    pub to: Address,
+    /// Data
+    pub data: Option<Bytes>,
+}
+
+/// Cita
 #[derive(Debug, Clone)]
 pub struct Cita<T> {
     transport: T,
@@ -46,7 +59,7 @@ impl<T: Transport> Cita<T> {
 
 
     /// Get block details with transaction hashes.
-    pub fn block(&self, block: BlockId) -> CallResult<Block<H256>, T::Out> {
+    pub fn block(&self, block: BlockId) -> CallResult<Block, T::Out> {
         let include_txs = helpers::serialize(&false);
 
         let result = match block {
@@ -66,7 +79,7 @@ impl<T: Transport> Cita<T> {
     }
 
     /// Get block details with full transaction objects.
-    pub fn block_with_txs(&self, block: BlockId) -> CallResult<Block<Transaction>, T::Out> {
+    pub fn block_with_txs(&self, block: BlockId) -> CallResult<Block, T::Out> {
         let include_txs = helpers::serialize(&true);
 
         let result = match block {
@@ -137,31 +150,13 @@ impl<T: Transport> Cita<T> {
     }
 
     /// Get transaction
-    pub fn transaction(&self, id: TransactionId) -> CallResult<Option<Transaction>, T::Out> {
-        let result = match id {
-            TransactionId::Hash(hash) => {
-                let hash = helpers::serialize(&hash);
-                self.transport.execute("cita_getTransaction", vec![hash])
-            }
-            TransactionId::Block(BlockId::Hash(hash), index) => {
-                let hash = helpers::serialize(&hash);
-                let idx = helpers::serialize(&index);
-                self.transport
-                    .execute("eth_getTransactionByBlockHashAndIndex", vec![hash, idx])
-            }
-            TransactionId::Block(BlockId::Number(number), index) => {
-                let number = helpers::serialize(&number);
-                let idx = helpers::serialize(&index);
-                self.transport
-                    .execute("eth_getTransactionByBlockNumberAndIndex", vec![number, idx])
-            }
-        };
-
-        CallResult::new(result)
+    pub fn transaction(&self, hash: H256) -> CallResult<Option<RpcTransaction>, T::Out> {
+        let hash = helpers::serialize(&hash);
+        CallResult::new(self.transport.execute("cita_getTransaction", vec![hash]))
     }
 
     /// Get transaction receipt
-    pub fn transaction_receipt(&self, hash: H256) -> CallResult<Option<TransactionReceipt>, T::Out> {
+    pub fn transaction_receipt(&self, hash: H256) -> CallResult<Option<Receipt>, T::Out> {
         let hash = helpers::serialize(&hash);
 
         CallResult::new(
@@ -200,7 +195,7 @@ impl<T: Transport> Cita<T> {
     }
 
     /// Sends a transaction transaction
-    pub fn send_transaction(&self, tx: TransactionRequest) -> CallResult<H256, T::Out> {
+    pub fn send_transaction(&self, tx: String) -> CallResult<TxResponse, T::Out> {
         let tx = helpers::serialize(&tx);
         CallResult::new(self.transport.execute("cita_sendTransaction", vec![tx]))
     }
@@ -373,3 +368,20 @@ impl<T: Transport> Cita<T> {
 //    Value::String("0x0000000000000000000000000000000000000000000000000000000000000123".into()) => 0x123
 //  );
 //}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json;
+    use serde_json::Error;
+
+    #[test]
+    fn call_deserialization() {
+        let s = "{\"from\":\"d46e8dd67c5d32be8058bb8eb970870f07244567\",\
+                 \"to\":\"b60e8dd61c5d32be8058bb8eb970870f07233155\",\
+                 \"data\":\"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675\"}";
+        let call: Result<CallRequest, Error> = serde_json::from_str(s);
+        assert!(call.is_ok());
+    }
+}
