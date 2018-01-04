@@ -164,7 +164,6 @@ impl Tokenizable for H256 {
     }
 }
 
-
 impl Tokenizable for Address {
     fn from_token(token: Token) -> Result<Self, Error> {
         match token {

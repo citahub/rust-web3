@@ -131,7 +131,6 @@ impl<T: Transport> Eth<T> {
         CallResult::new(result)
     }
 
-
     /// Get number of transactions in block
     pub fn block_transaction_count(&self, block: BlockId) -> CallResult<Option<U256>, T::Out> {
         let result = match block {

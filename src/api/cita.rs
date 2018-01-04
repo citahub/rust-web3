@@ -44,7 +44,6 @@ impl<T: Transport> Cita<T> {
         CallResult::new(self.transport.execute("eth_call", vec![req, block]))
     }
 
-
     /// Get block details with transaction hashes.
     pub fn block(&self, block: BlockId) -> CallResult<Block, T::Out> {
         let include_txs = helpers::serialize(&false);
@@ -85,7 +84,6 @@ impl<T: Transport> Cita<T> {
         CallResult::new(result)
     }
 
-
     /// Get number of transactions in block
     fn block_transaction_count(&self, block: BlockId) -> CallResult<Option<U256>, T::Out> {
         let result = match block {
@@ -111,7 +109,6 @@ impl<T: Transport> Cita<T> {
 
         CallResult::new(self.transport.execute("eth_getCode", vec![address, block]))
     }
-
 
     /// Get storage entry
     fn storage(&self, address: Address, idx: U256, block: Option<BlockNumber>) -> CallResult<H256, T::Out> {

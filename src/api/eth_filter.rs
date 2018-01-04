@@ -1,6 +1,5 @@
 //! `Eth` namespace, filters.
 
-
 use std::marker::PhantomData;
 use std::time::Duration;
 use std::vec;

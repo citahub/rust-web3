@@ -81,7 +81,6 @@ impl Drop for EventLoopHandle {
     }
 }
 
-
 type PendingResult<O> = oneshot::Receiver<Result<O>>;
 
 enum RequestState<O> {
@@ -130,7 +129,7 @@ where
                     trace!("[{}] Checking response.", self.id);
                     let result = try_ready!(
                         rx.poll()
-                            .map_err(|_| { Error::from(ErrorKind::Io(::std::io::ErrorKind::TimedOut.into())) })
+                            .map_err(|_| Error::from(ErrorKind::Io(::std::io::ErrorKind::TimedOut.into())))
                     );
                     trace!("[{}] Extracting result.", self.id);
                     return result.and_then(|x| extract(x)).map(futures::Async::Ready);
