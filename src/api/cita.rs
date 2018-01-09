@@ -5,6 +5,10 @@ use helpers::{self, CallResult};
 use types::{Address, BlockId, BlockNumber, Bytes, H256, U256, Work};
 use Transport;
 use cita_types::*;
+use cita_crypto::*;
+use protobuf::core::Message;
+use rustc_hex::FromHex;
+use rustc_hex::ToHex;
 
 /// Cita
 #[derive(Debug, Clone)]
@@ -182,6 +186,25 @@ impl<T: Transport> Cita<T> {
     pub fn send_transaction(&self, tx: String) -> CallResult<TxResponse, T::Out> {
         let tx = helpers::serialize(&tx);
         CallResult::new(self.transport.execute("cita_sendTransaction", vec![tx]))
+    }
+
+    pub fn generate_tx(
+        &self,
+        pk: &PrivKey,
+        code: String,
+        to: String,
+        height: u64,
+        quota: u64,
+        nonce: String,
+    ) -> UnverifiedTransaction {
+        let data = code.from_hex().unwrap();
+        let mut tx = Transaction::new();
+        tx.set_data(data);
+        tx.set_to(to);
+        tx.set_nonce(nonce);
+        tx.set_valid_until_block(height + 100);
+        tx.set_quota(quota);
+        tx.sign(*pk).take_transaction_with_sig()
     }
 
     // TODO [ToDr] Proper type?

@@ -9,7 +9,9 @@ extern crate serde;
 #[cfg_attr(test, macro_use)]
 extern crate serde_json;
 extern crate tokio_timer;
-
+extern crate cita_crypto;
+extern crate protobuf;
+extern crate rustc_hex;
 #[macro_use]
 extern crate error_chain;
 #[macro_use]
