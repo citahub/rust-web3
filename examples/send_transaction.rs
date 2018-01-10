@@ -31,7 +31,7 @@ fn main() {
 
     //study create sendtransaction param
     let cita = web3.cita();
-    let account = cita.accounts("/home/suyanlong/cryptape/rust-web3/config.json".as_ref()).map_err(|err|{
+    let account = cita.accounts("/path/rust-web3/config.json".as_ref()).map_err(|err|{
         println!("{:?}",err)
     }).unwrap();
 
