@@ -15,7 +15,7 @@ pub use self::log::{Filter, FilterBuilder, Log};
 pub use self::transaction::{Receipt as TransactionReceipt, Transaction};
 pub use self::transaction_id::TransactionId;
 pub use self::transaction_request::{CallRequest, TransactionCondition, TransactionRequest};
-pub use self::uint::{H128, H160, H2048, H256, H512, H520, H64, U256, U64};
+pub use self::uint::{FromStrError, H128, H160, H2048, H256, H512, H520, H64, U256, U64};
 pub use self::work::Work;
 
 /// Address

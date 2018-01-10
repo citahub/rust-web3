@@ -1,23 +1,24 @@
 //! Ethereum JSON-RPC client (Web3).
 
 extern crate arrayvec;
+extern crate cita_crypto;
+#[macro_use]
+extern crate error_chain;
 extern crate ethabi;
 extern crate jsonrpc_core as rpc;
+#[macro_use]
+extern crate log;
 extern crate parking_lot;
+extern crate protobuf;
+extern crate rustc_hex;
 extern crate rustc_serialize;
 extern crate serde;
+#[macro_use]
+extern crate serde_derive;
 #[cfg_attr(test, macro_use)]
 extern crate serde_json;
 extern crate tokio_timer;
-extern crate cita_crypto;
-extern crate protobuf;
-extern crate rustc_hex;
-#[macro_use]
-extern crate error_chain;
-#[macro_use]
-extern crate log;
-#[macro_use]
-extern crate serde_derive;
+extern crate util;
 
 extern crate jsonrpc_types;
 extern crate libproto;

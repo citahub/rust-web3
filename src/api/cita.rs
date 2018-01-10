@@ -2,14 +2,16 @@
 #![allow(dead_code, unused_imports)]
 use api::Namespace;
 use helpers::{self, CallResult};
-use types::{Address, BlockId, BlockNumber, Bytes, H256, U256, Work};
+use types::{Address, BlockId, BlockNumber, Bytes, H160, H256, U256, Work};
 use Transport;
 use cita_types::*;
 use cita_crypto::*;
 use protobuf::core::Message;
 use rustc_hex::FromHex;
 use rustc_hex::ToHex;
-
+use std::path::Path;
+use cita_types::{Account, Error};
+use std::str::FromStr;
 /// Cita
 #[derive(Debug, Clone)]
 pub struct Cita<T> {
@@ -31,8 +33,13 @@ impl<T: Transport> Namespace<T> for Cita<T> {
 
 impl<T: Transport> Cita<T> {
     /// Get list of available accounts.
-    fn accounts(&self) -> CallResult<Vec<Address>, T::Out> {
-        CallResult::new(self.transport.execute("eth_accounts", vec![]))
+    pub fn accounts(&self, path: &Path) -> Result<Vec<Account>, Error> {
+        Account::read_user_from_file(path).map_err(|err| Error::IO(err))
+        //        Ok(accountes
+        //            .into_iter()
+        //            .map(|account| Address::from_str(account.address.as_ref()).unwrap())
+        //            .collect())
+        //        CallResult::new(self.transport.execute("eth_accounts", vec![]))
     }
 
     /// Get current block number

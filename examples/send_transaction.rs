@@ -9,6 +9,7 @@ use web3::futures::Future;
 
 use protobuf::core::Message;
 use rustc_hex::ToHex;
+use std::convert::AsRef;
 
 const MAX_PARALLEL_REQUESTS: usize = 64;
 const CONTRUCT_CODE: &str = "60606040523415600e57600080fd5b5b5b5b60948061001f6000396000f300\
@@ -30,19 +31,24 @@ fn main() {
 
     //study create sendtransaction param
     let cita = web3.cita();
+    let account = cita.accounts("/home/suyanlong/cryptape/rust-web3/config.json".as_ref()).map_err(|err|{
+        println!("{:?}",err)
+    }).unwrap();
+
+    println!("acount = {:?}", account);
     let height = cita.block_number().map(|height| {
         println!("height: {:?}", height);
         height
     });
 
     let number = event_loop.run(height).unwrap();
-    let key_pair = KeyPair::gen_keypair();
+    //let key_pair = KeyPair::gen_keypair();
 
     //create contract
     let number = number.low_u64();
     println!("number: {:?}", number);
     let tx = cita.generate_tx(
-        key_pair.privkey(),
+        &account[0].secret,
         CONTRUCT_CODE.to_string(),
         "".to_string(),
         number,
@@ -58,4 +64,3 @@ fn main() {
     });
     event_loop.run(tx).unwrap();
 }
-
