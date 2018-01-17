@@ -27,9 +27,6 @@ pub struct Log {
     /// Log Index in Transaction
     #[serde(rename = "transactionLogIndex")]
     pub transaction_log_index: Option<U256>,
-    /// Log Type
-    #[serde(rename = "type")]
-    pub log_type: String,
 }
 
 /// Filter
