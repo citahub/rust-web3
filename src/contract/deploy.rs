@@ -154,7 +154,7 @@ mod tests {
 
             // when
             builder
-                .options(Options::with(|mut opt| {
+                .options(Options::with(|opt| {
                     opt.value = Some(5.into())
                 }))
                 .confirmations(1)

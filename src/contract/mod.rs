@@ -231,7 +231,7 @@ mod tests {
                     "name",
                     (),
                     Address::from(5),
-                    Options::with(|mut options| {
+                    Options::with(|options| {
                         options.gas_price = Some(10_000_000.into());
                     }),
                     BlockNumber::Latest,

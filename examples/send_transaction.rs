@@ -3,8 +3,6 @@ extern crate protobuf;
 extern crate rustc_hex;
 extern crate tokio_core;
 extern crate web3;
-
-use cita_crypto::*;
 use web3::futures::Future;
 
 use protobuf::core::Message;

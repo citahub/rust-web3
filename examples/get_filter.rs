@@ -2,7 +2,6 @@ extern crate tokio_core;
 extern crate web3;
 
 use web3::futures::Future;
-use web3::types::{BlockId, BlockNumber};
 use web3::types::FilterBuilder;
 const MAX_PARALLEL_REQUESTS: usize = 64;
 

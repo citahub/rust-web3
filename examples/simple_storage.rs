@@ -4,7 +4,7 @@ extern crate web3;
 
 use web3::futures::Future;
 use web3::contract::{Contract, Options};
-use web3::types::{Address, U256};
+use web3::types::U256;
 use rustc_hex::FromHex;
 use std::time;
 
@@ -27,7 +27,7 @@ fn main() {
         .unwrap()
         .confirmations(0)
         .poll_interval(time::Duration::from_secs(10))
-        .options(Options::with(|mut opt| {
+        .options(Options::with(|opt| {
             opt.gas = Some(3_000_000.into())
         }))
         .execute(bytecode, (), accounts[0])
